@@ -2,8 +2,8 @@
 <a name="top"></a>
 
 ## Table of Contents
-- [Sample Pipelines](samplepipelines)
-- [Code Snippets](snippets)
+- [Sample Pipelines](#samplepipelines)
+- [Code Snippets](#snippets)
 
 
 <br/><br/>
