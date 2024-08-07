@@ -2,7 +2,8 @@
 <a name="top"></a>
 
 ## Table of Contents
-[Sample Pipelines](samplepipelines)
+- [Sample Pipelines](samplepipelines)
+- [Code Snippets](snippets)
 
 
 <br/><br/>
@@ -11,13 +12,13 @@
 <br/>
 
 
-<a name="bugs"></a>
+<a name="samplepipelines"></a>
 ## Sample Pipelines
 
 ### Basic Pipeline Structure
 ```groovy
 pipeline {
-agent { node { label 'DTL-LIN7' } }
+agent { node { label 'myAgent' } }
 
 parameters {
   string(name: "STRING_VAR", defaultValue: "", description: "Some Desc")
@@ -53,6 +54,55 @@ stages {
   } //Stage2
 } //stages
 } //pipeline
+```
+
+### Print Credentials in Console Log
+```groovy
+pipeline {
+  agent { node { label 'myAgent' } }
+  stages {
+    stage('Dump credentials') {
+      steps {
+        script {
+            def creds = ['dbPassword','vaultPassword','etc']
+            for (item in creds) {
+                withCredentials([usernamePassword(credentialsId: item, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                sh """
+                echo '${item} : ${USERNAME} : ${PASSWORD}' >> creds.txt
+                """
+                }
+            }
+        }
+      }
+    }
+    stage('Cat credentials') {
+      steps {
+        script {
+            sh """
+            cat creds.txt
+            """
+        }
+      }
+    }    
+  }
+}
+```
+
+<br/><br/>
+
+---  
+<br/>
+
+## Code Snippets
+
+### Working with JSON
+#### Sample JSON
+```json
+under construction
+```
+#### Parsing the Sample JSON
+```groovy
+under construction
 ```
 
 
