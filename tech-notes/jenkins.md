@@ -88,11 +88,14 @@ pipeline {
 }
 ```
 
+[back to top](#top)
+
 <br/><br/>
 
 ---  
 <br/>
 
+<a name="snippets"></a>
 ## Code Snippets
 
 ### Working with JSON
